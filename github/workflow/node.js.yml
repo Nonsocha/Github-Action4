@@ -96,7 +96,7 @@ jobs:
           tag_name: ${{ steps.bump-version.outputs.newTag }}
           name: Release ${{ steps.bump-version.outputs.newTag }}
           body: |
-            🚀 New release deployed
+           New release deployed
             - Code tested
             - Security scanned
             - Version automated
