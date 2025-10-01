@@ -83,7 +83,7 @@ jobs:
 
       # Automate Versioning
       - name: Bump version and push tag
-        uses: phips28/gh-action-bump-version@v9
+        uses: phips28/gh-action-bump-version@v11.0.7
         id: bump-version
         with:
           tag-prefix: "v"
