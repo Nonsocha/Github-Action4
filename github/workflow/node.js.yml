@@ -1,13 +1,11 @@
 name: Node.js CI/CD Pipeline
-
 on:
   push:
     branches: [ "main", "develop" ]
 
 jobs:
-  # ------------------------
-  # 1. Build & Test Stage
-  # ------------------------
+  # Build & Test Stage
+  
   build-test:
     runs-on: ${{ matrix.os }}
 
@@ -43,9 +41,8 @@ jobs:
         run: npm test
 
 
-  # ------------------------
-  # 2. Security Analysis Stage
-  # ------------------------
+  
+  # Security Analysis Stage
   codeql-analysis:
     runs-on: ubuntu-latest
     permissions:
@@ -74,9 +71,8 @@ jobs:
         uses: github/codeql-action/analyze@v3
 
 
-  # ------------------------
-  # 3. Versioning & Release Stage
-  # ------------------------
+  # Versioning & Release Stage
+  
   release:
     runs-on: ubuntu-latest
     needs: [build-test, codeql-analysis]
@@ -108,11 +104,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
-  # ------------------------
-  # 4. Deploy Stage
-  # ------------------------
+  # Deploy Stage
+  
   deploy:
-    if: github.ref == 'refs/heads/main'  # ✅ Only deploy from main branch
+    if: github.ref == 'refs/heads/main'  # Only deploy from main branch
     runs-on: ubuntu-latest
     needs: [release]
 
