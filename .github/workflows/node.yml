@@ -35,7 +35,7 @@ jobs:
         run: npm ci
 
       - name: Run ESLint (Code Analysis)
-        run: npx eslint . --ext .js,.jsx,.ts,.tsx
+        run: npx eslint@8 . --ext .js,.jsx,.ts,.tsx
 
       - name: Run Tests
         run: npm test
