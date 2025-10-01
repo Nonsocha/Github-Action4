@@ -83,7 +83,8 @@ jobs:
 
       # Automate Versioning
       - name: Bump version and push tag
-        uses: phips28/gh-action-bump-version@v10
+        uses: phips28/gh-action-bump-version@v9
+        id: bump-version
         with:
           tag-prefix: "v"
         env:
@@ -96,7 +97,7 @@ jobs:
           tag_name: ${{ steps.bump-version.outputs.newTag }}
           name: Release ${{ steps.bump-version.outputs.newTag }}
           body: |
-            🚀 New release deployed
+           New release deployed
             - Code tested
             - Security scanned
             - Version automated
@@ -117,7 +118,7 @@ jobs:
 
       - name: Deploy Application
         run: |
-          echo "🚀 Deploying application..."
+          echo " Deploying application..."
           # Example: Docker build and push
           docker build -t myapp:${{ github.sha }} .
           docker tag myapp:${{ github.sha }} mydockerhub/myapp:${{ github.sha }}
